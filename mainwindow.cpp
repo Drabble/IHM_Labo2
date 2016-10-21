@@ -12,13 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    QProcess process;
-    process.start("ffprobe");
-    process.waitForFinished(-1);
-    QString output(process.readAllStandardOutput());
-    qDebug() << output;
-    ui->textBrowserFileProperties->setText(output);
 }
 
 MainWindow::~MainWindow()
@@ -43,12 +36,19 @@ void MainWindow::on_selectInputFile_clicked()
         }
         file.close();*/
 
-
         ui->inputInputFile->setText(inputFileName);
 
         QProcess process;
-        process.start("ffprobe", QStringList() << "-v error -show_format -show_streams " << inputFileName);
+        process.start("ffprobe", QStringList() << "-v" << "error" << "-show_format" << "-show_streams" << inputFileName);
+        if(process.waitForStarted()){
+            qDebug() << "Starting";
+        }
+        else{
+            "Error starting cmd.exe process";
+                    qDebug() << process.errorString();
+        }
         process.waitForFinished(-1);
+        qDebug() << process.readAllStandardError();
         QString output(process.readAllStandardOutput());
         qDebug() << output;
         ui->textBrowserFileProperties->setText(output);
