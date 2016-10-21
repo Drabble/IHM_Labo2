@@ -18,8 +18,14 @@ public:
 private slots:
     void on_actionQuit_triggered();
 
+    void on_selectInputFile_clicked();
+
+    void on_selectOutputFile_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QString inputFileName;
+    QString ouputFileName;
 };
 
 #endif // MAINWINDOW_H

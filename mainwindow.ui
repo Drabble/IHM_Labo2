@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelInputFile">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -27,7 +27,7 @@
      <string>Input file :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="labelOutputFile">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -40,27 +40,7 @@
      <string>Output file :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>10</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>50</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="selectInputFile">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -73,7 +53,7 @@
      <string>Select file</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="selectOutputFile">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -86,7 +66,7 @@
      <string>Select file</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser">
+   <widget class="QTextBrowser" name="textBrowserFileProperties">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -103,7 +83,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="labelEndTime">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -116,7 +96,7 @@ p, li { white-space: pre-wrap; }
      <string>End time :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="labelStartTime">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -129,7 +109,7 @@ p, li { white-space: pre-wrap; }
      <string>Start time :</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_2">
+   <widget class="QTextBrowser" name="textBrowserFfmpegCommand">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -139,7 +119,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="labelFileProperties">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -152,7 +132,7 @@ p, li { white-space: pre-wrap; }
      <string>File properties :</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="labelFfmpegCommand">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -165,7 +145,7 @@ p, li { white-space: pre-wrap; }
      <string>ffmpeg command to cut the video :</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QSlider" name="sliderStartTime">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -178,7 +158,7 @@ p, li { white-space: pre-wrap; }
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
+   <widget class="QSlider" name="sliderEndTime">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -192,6 +172,26 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputInputFile">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>10</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="inputOutputFile">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
     </property>
    </widget>
   </widget>
