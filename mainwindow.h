@@ -22,10 +22,19 @@ private slots:
 
     void on_selectOutputFile_clicked();
 
+    void updateCommand();
+
+    void on_sliderStartTime_valueChanged(int value);
+
+    void on_sliderEndTime_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
-    QString inputFileName;
-    QString ouputFileName;
+    QString inputFileName,
+            outputFileName;
+    int  startTime,
+         endTime,
+         duration;
 };
 
 #endif // MAINWINDOW_H

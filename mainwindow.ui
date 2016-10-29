@@ -100,7 +100,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>220</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -113,7 +113,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>320</y>
       <width>381</width>
       <height>71</height>
      </rect>
@@ -136,7 +136,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>290</y>
+      <y>300</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -149,10 +149,13 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>230</y>
+      <y>220</y>
       <width>311</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>0</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -167,8 +170,11 @@ p, li { white-space: pre-wrap; }
       <height>22</height>
      </rect>
     </property>
+    <property name="maximum">
+     <number>0</number>
+    </property>
     <property name="value">
-     <number>99</number>
+     <number>0</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -192,6 +198,32 @@ p, li { white-space: pre-wrap; }
       <width>211</width>
       <height>31</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelEndTimeValue">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>280</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelStartTimeValue">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>240</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
     </property>
    </widget>
   </widget>
