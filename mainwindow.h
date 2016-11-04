@@ -28,13 +28,19 @@ private slots:
 
     void on_sliderEndTime_valueChanged(int value);
 
+    QString msToString(quint64 ms);
+
+    void on_copyToClipboard_clicked();
+
+    void on_inputOutputFile_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     QString inputFileName,
             outputFileName;
-    int  startTime,
-         endTime,
-         duration;
+    quint64  startTime,
+             endTime,
+             duration;
 };
 
 #endif // MAINWINDOW_H

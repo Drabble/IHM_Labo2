@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>407</width>
-    <height>462</height>
+    <height>497</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -203,27 +203,46 @@ p, li { white-space: pre-wrap; }
    <widget class="QLabel" name="labelEndTimeValue">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>190</x>
       <y>280</y>
-      <width>55</width>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>00:00:00</string>
+     <string>00:00:00.000</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
     </property>
    </widget>
    <widget class="QLabel" name="labelStartTimeValue">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>190</x>
       <y>240</y>
-      <width>55</width>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>00:00:00</string>
+     <string>00:00:00.000</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::PlainText</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="copyToClipboard">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy to clipboard</string>
     </property>
    </widget>
   </widget>
