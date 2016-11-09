@@ -12,9 +12,11 @@ TARGET = IHM_Labo2
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    ffmpegwindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    ffmpegwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    ffmpegwindow.ui
