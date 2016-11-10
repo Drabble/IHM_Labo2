@@ -42,26 +42,26 @@ void FfmpegWindow::on_selectInputFile_clicked()
     if (!inputFileName.isEmpty()) {
 
         // Run a ffmpeg to check if the file contains an error
-        QProcess process1;
+        QProcess checkErrorProcess;
         qDebug() << "OUTPUT : " << "ffmpeg" << "-v" << "error" << "-i" << inputFileName << "-f" << "null" << "-";
         qDebug() << QStringList() << "-v" << "error" << "-i" << inputFileName << "-f" << "null" << "-";
-        process1.start("ffmpeg", QStringList() << "-v" << "error" << "-i" << inputFileName << "-f" << "null" << "-");
+        checkErrorProcess.start("ffmpeg", QStringList() << "-v" << "error" << "-i" << inputFileName << "-f" << "null" << "-");
 
         // Wait for the ffmpeg command to start
-        if(process1.waitForStarted()){
+        if(checkErrorProcess.waitForStarted()){
             qDebug() << "Starting the command to check whether the file is valid or not";
         }
         else{
             QMessageBox::critical(this, tr("Error"),
                                   tr("Error starting cmd.exe process"));
-            qDebug() << process1.errorString();
+            qDebug() << checkErrorProcess.errorString();
         }
 
         // Wait for the ffmpeg command to finish and read the output
-        process1.waitForFinished(-1);
-        QString errorOutput(process1.readAllStandardError());
+        checkErrorProcess.waitForFinished(-1);
+        QString errorOutput(checkErrorProcess.readAllStandardError());
         qDebug() << errorOutput;
-        QString output(process1.readAllStandardOutput());
+        QString output(checkErrorProcess.readAllStandardOutput());
         qDebug() << output;
 
         // If any message is output, it means there is an error otherwise set the input file name
@@ -73,23 +73,23 @@ void FfmpegWindow::on_selectInputFile_clicked()
         }
 
         // Run the command to retrieve all the information about the video file
-        QProcess process2;
-        process2.start("ffprobe", QStringList() << "-v" << "error" << "-show_format" << "-show_streams" << inputFileName);
+        QProcess fetchPropertiesProcess;
+        fetchPropertiesProcess.start("ffprobe", QStringList() << "-v" << "error" << "-show_format" << "-show_streams" << inputFileName);
 
         // Wait for the command to start
-        if(process2.waitForStarted()){
+        if(fetchPropertiesProcess.waitForStarted()){
             qDebug() << "Starting command to retrieve the information about the video file";
         }
         else{
             ui->textBrowserFileProperties->setText("Error starting cmd.exe process");
-            qDebug() << process2.errorString();
+            qDebug() << fetchPropertiesProcess.errorString();
             return;
         }
 
         // Wait for the process to finish and retrieve the error output
-        process2.waitForFinished(-1);
-        QString errorOutput2(process2.readAllStandardError());
-        qDebug() << errorOutput2;
+        fetchPropertiesProcess.waitForFinished(-1);
+        QString errorOutputProperties(fetchPropertiesProcess.readAllStandardError());
+        qDebug() << errorOutputProperties;
 
         // If there is an error show the error in the file properties text browser
         if(errorOutput.length() > 0){
@@ -97,38 +97,38 @@ void FfmpegWindow::on_selectInputFile_clicked()
         } else{
 
             // Retrieve the command output and set the file properties text browser value
-            QString output2(process2.readAllStandardOutput());
-            qDebug() << output2;
-            ui->textBrowserFileProperties->setText(output2);
+            QString propertiesOutput(fetchPropertiesProcess.readAllStandardOutput());
+            qDebug() << propertiesOutput;
+            ui->textBrowserFileProperties->setText(propertiesOutput);
 
             // Start the process to retrieve the output file duration
-            QProcess process3;
-            process3.start("ffprobe", QStringList() << "-v" << "error" << "-show_entries" <<
+            QProcess durationProcess;
+            durationProcess.start("ffprobe", QStringList() << "-v" << "error" << "-show_entries" <<
                            "format=duration" << "-of" << "default=noprint_wrappers=1:nokey=1" << inputFileName);
 
             // Wait for the process to start
-            if(process3.waitForStarted()){
+            if(durationProcess.waitForStarted()){
                 qDebug() << "Starting process to retrieve the video file duration";
             }
             else{
                 ui->textBrowserFileProperties->setText("Error starting cmd.exe process");
-                qDebug() << process3.errorString();
+                qDebug() << durationProcess.errorString();
                 return;
             }
 
             // Wait for the process to finish and retrieve the error output
-            process3.waitForFinished(-1);
-            QString errorOutput3(process3.readAllStandardError());
-            qDebug() << errorOutput3;
+            durationProcess.waitForFinished(-1);
+            QString errorOutputDuration(durationProcess.readAllStandardError());
+            qDebug() << errorOutputDuration;
 
             // If there is an error with the command show the error in the file properties text browser
             if(errorOutput.length() > 0){
                 ui->textBrowserFileProperties->setText("Error in the input file");
             } else{
                 // Retrieve the command output and convert it to microseconds
-                QString output3(process3.readAllStandardOutput());
-                qDebug() << output3;
-                duration = quint64(output3.toFloat() * 1000);
+                QString durationOutput(durationProcess.readAllStandardOutput());
+                qDebug() << durationOutput;
+                duration = quint64(durationOutput.toFloat() * 1000);
                 qDebug() << "Video duration : " << duration;
 
                 // Configure the sliders with the duration
