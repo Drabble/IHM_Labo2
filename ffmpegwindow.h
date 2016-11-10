@@ -88,10 +88,10 @@ private slots:
 private:
     Ui::FfmpegWindow *ui;   // The UI containing all the fields
     QString inputFileName,  // The input file name
-    outputFileName; // The output file name
+            outputFileName; // The output file name
     quint64  startTime,     // The slider start time to cut the video in ms
-    endTime,       // The slider end time to cut the video in ms
-    duration;      // The duration of the video in ms
+             endTime,       // The slider end time to cut the video in ms
+             duration;      // The duration of the video in ms
 };
 
 #endif // FfmpegWindow_H
