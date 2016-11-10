@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QString>
 #include <QClipboard>
+#include <QFileInfo>
 
 FfmpegWindow::FfmpegWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -160,9 +161,19 @@ void FfmpegWindow::on_selectOutputFile_clicked()
         // Set the output file input text with the output file name
         ui->inputOutputFile->setText(outputFileName);
 
+        // check if file exists
+        QFileInfo check_file(outputFileName);
+        if (check_file.exists() && check_file.isFile()) {
+            ui->labelOutputFileExists->setText("The output file already exists, it will be overwritten !");
+        } else {
+            ui->labelOutputFileExists->setText("The output file doesn't exists, it will be created !");
+        }
+
         // Update the output file name and update the command to cut the video
         this->outputFileName = outputFileName;
         updateCommand();
+    } else{
+        ui->labelOutputFileExists->setText("");
     }
 }
 
@@ -171,6 +182,19 @@ void FfmpegWindow::on_inputOutputFile_textChanged(const QString &arg1)
     // Update the output file name and the command to cut the video
     outputFileName = arg1;
     updateCommand();
+
+
+    // check if file exists
+    if(outputFileName.length() > 0){
+        QFileInfo check_file(outputFileName);
+        if (check_file.exists() && check_file.isFile()) {
+            ui->labelOutputFileExists->setText("The output file already exists, it will be overwritten !");
+        } else {
+            ui->labelOutputFileExists->setText("The output file doesn't exists, it will be created !");
+        }
+    } else{
+        ui->labelOutputFileExists->setText("");
+    }
 }
 
 void FfmpegWindow::on_sliderStartTime_valueChanged(int value)
