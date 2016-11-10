@@ -15,7 +15,7 @@
 #include <QClipboard>
 
 FfmpegWindow::FfmpegWindow(QWidget *parent) :
-    QFfmpegWindow(parent),
+    QMainWindow(parent),
     ui(new Ui::FfmpegWindow)
 {
     ui->setupUi(this);
